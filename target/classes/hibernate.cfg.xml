@@ -2,17 +2,12 @@
 <!DOCTYPE hibernate-configuration PUBLIC
     "-//Hibernate/Hibernate Configuration DTD//EN"
     "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
-
+ 
 <hibernate-configuration>
-	<session-factory>
-		<mapping class="com.rd.entity.ReleaseDetail" />
-		<mapping class="com.rd.entity.Partition" />
-		<mapping class="com.rd.entity.MDSObject" />
-		<mapping class="com.rd.entity.JMSObject" />
-		<mapping class="com.rd.entity.FTPAdapterObject" />
-		<mapping class="com.rd.entity.Deployment" />
-		<mapping class="com.rd.entity.DataSourceObject" />
-		<mapping class="com.rd.entity.CronJob" />
-
-	</session-factory>
+    <session-factory>
+        <mapping class="com.hiber.entity.EmployeeEntity" />
+        <mapping class="com.hiber.entity.Spending" />
+         <mapping class="com.hiber.entity.Store" />
+         <mapping class="com.hiber.entity.CreditData" />
+    </session-factory>
 </hibernate-configuration>

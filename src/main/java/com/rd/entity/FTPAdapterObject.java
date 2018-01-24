@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /*CREATE TABLE FTP_ADAPTER (
 		FTPADP_ID INTEGER NOT NULL,
@@ -24,7 +23,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 		PASSWORD VARCHAR(50),
 		SFTP VARCHAR(50)
 	);*/
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "FTP_ADAPTER")
 public class FTPAdapterObject {

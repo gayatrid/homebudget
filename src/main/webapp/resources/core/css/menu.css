@@ -1,0 +1,264 @@
+.img-arredondadaSide {
+  border-radius: 100%;
+  overflow: hidden;
+  height: 100px;
+  width:100px;
+  background: black;
+  margin-top:10px;
+  margin-left: 5px;
+
+}
+
+.img-arredondadaChat {
+  border-radius: 100%;
+  overflow: hidden;
+  height: 50px;
+  width:50px;
+  background: black;
+
+}
+.tema{
+  color:red;
+}
+
+.chat-container {
+    width: 400px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.corStatusFinalizado{
+  color:green;
+}
+.corNormal{
+  color:#3366FF;
+}
+
+.corStatusNaoFinalizado{
+  color:red;
+}
+
+.alinharCentro{
+  text-align: center;
+}
+.user-panel {
+  padding: 10px;
+}
+.user-panel:before,
+.user-panel:after {
+  display: table;
+  content: " ";
+}
+.user-panel:after {
+  clear: both;
+}
+.user-panel > .image > img {
+  width: 45px;
+  height: 45px;
+}
+.user-panel > .info {
+  font-weight: 600;
+  padding: 5px 5px 5px 15px;
+  font-size: 14px;
+  line-height: 1;
+}
+.user-panel > .info > p {
+  margin-bottom: 9px;
+}
+.user-panel > .info > a {
+  text-decoration: none;
+  padding-right: 5px;
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: normal;
+}
+.user-panel > .info > a > .fa,
+.user-panel > .info > a > .ion,
+.user-panel > .info > a > .glyphicon {
+  margin-right: 3px;
+}
+
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  margin-top: -20px;
+}
+
+#wrapper.toggled {
+  padding-left: 250px;
+}
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #000;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 250px;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px;
+  margin-left: -25px;
+}
+.logo{
+  color: rgb(105, 183, 105);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 39.6px;
+  margin-left:20px;
+  margin-top:10px
+}
+.fa {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  font-size-adjust: none;
+  font-stretch: normal;
+  font-feature-settings: normal;
+  font-language-override: normal;
+  font-kerning: auto;
+  font-synthesis: weight style;
+  font-variant: normal;
+  font-size: inherit;
+  text-rendering: auto;
+  padding-right: 10px;
+}
+
+.containerLogin{
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-top: 100px;
+  margin-left: auto;
+  width: 30%;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #999999;
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+
+@media only screen and (max-height: 650px) and (min-width:768px){
+
+  #sidebar-wrapper {
+    width: 250px;
+    position: absolute;
+    height:200%;
+  }
+}
+
+
+
+@media only screen and (max-height: 450px) and (min-width:768px){
+
+  #sidebar-wrapper {
+    width: 250px;
+    position: absolute;
+    height:160%;
+  }
+}
+
+@media only screen and (max-height: 1200px) and (min-width:1366px){
+
+  #sidebar-wrapper {
+    width: 250px;
+    position: absolute;
+    height:100%;
+  }
+}
+
+
+@media(min-width:768px) {
+  #wrapper {
+    padding-left: 120px;
+  }
+
+  #wrapper.toggled {
+    padding-left: 0;
+  }
+
+  #sidebar-wrapper {
+    width: 250px;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    width: 0;
+
+  }
+
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+  }
+
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
+}

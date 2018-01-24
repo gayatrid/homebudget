@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /*CREATE TABLE JMS (
 		JMS_ID INTEGER NOT NULL,
@@ -21,7 +20,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 		SUBDEPLOYMENT VARCHAR(50)
 	);
 */
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "JMS")
 public class JMSObject {

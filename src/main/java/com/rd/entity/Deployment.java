@@ -10,14 +10,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-
 /*CREATE TABLE DEPLOYMENT (
 		COMPOSITE_NAME VARCHAR(50),
 		PARTITION_ID INTEGER NOT NULL,
 		RDF_ID INTEGER NOT NULL
 	);*/
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "DEPLOYMENT")
 public class Deployment {

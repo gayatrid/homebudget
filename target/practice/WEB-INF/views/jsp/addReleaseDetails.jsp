@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en" ng-app="myapp">
 <head>
 <title>Release Details</title>
@@ -9,15 +10,17 @@
 <link rel="stylesheet"  href="<%=request.getContextPath() %>/resources/core/css/table.css">
 </head>
 <body ng-controller="ReleaseDetailsController">
+	
+	
 	<form >
 		<div class="header">
 			<table align="left">
 				<tr>
-				 <td>ITN</td><td><input type="radio" ng-model="releaseDetails.ticketType"/></td>
-				 <td>PRdd</td><td><input type="radio" ng-model="releaseDetails.ticketType" /></td>
-					<td><input class="biggerTextBox" type="text" ng-model="releaseDetails.ticketNumber"	placeholder="Ticket Number"></td>
-					<td><input class="biggerTextBox" placeholder="Release Date"	ng-model="releaseDetails.releaseDate" type="date" value="2017-06-01" /></td>
-					<td><input class="biggerTextBox" 	ng-model="releaseDetails.releaseDescription" type="text" placeholder="Release Description" /></td>
+				 <td>ITSM</td><td><input type="radio" ng-model="releaseDetails.ticketType"/></td>
+				 <td>PR</td><td><input type="radio" ng-model="releaseDetails.ticketType" /></td>
+					<td><input  type="text" ng-model="releaseDetails.ticketNumber"	placeholder="Ticket Number"></td>
+					<td><input  type="date"  ng-model="releaseDetails.releaseDate" /></td>
+					<td><input  	ng-model="releaseDetails.releaseDescription" type="text" placeholder="Release Description" /></td>
 				
 				</tr>
 				
@@ -34,7 +37,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td><button name="Deployment" class="button"
+					<td><button name="JMS" class="button"
 							ng-click="type='JMS'">JMS</button></td>
 				</tr>
 				<tr>
@@ -42,12 +45,16 @@
 							ng-click="type='DS'">Data Source</button></td>
 				</tr>
 				<tr>
-					<td><button name="Deployment" class="button"
+					<td><button name="Adapter" class="button"
+							ng-click="type='Adapter'">Adapter</button></td>
+				</tr>
+				<tr>
+					<td><button name="MDS" class="button"
 							ng-click="type='MDS'">MDS</button></td>
 				</tr>
 				<tr>
-					<td><button name="Deployment" class="button"
-							ng-click="type='Adapter'">Adapter</button></td>
+					<td><button name="CronJob" class="button"
+							ng-click="type='CronJob'">Cron Job</button></td>
 				</tr>
 			</table>
 		</div>
@@ -59,15 +66,14 @@
 						<td><input class="form-control" type="text"
 							placeholder="Compsite Name"
 							ng-model="releaseDetails.compositeName" required></td>
-						<td><select class="form-control"
-							ng-model="releaseDetails.partition" required>
-								<option value="Partition" selected>Partition</option>
-								<option value="Defult">Defult</option>
-								<option value="gg">gg</option>
-								<option value="hh">hh</option>
-						</select></td>
-						<td><input type="submit" value="Add New" class="smallButton"
-							ng-click="addNew(releaseDetails)"></td>
+						<td>
+							<select class="form-control" ng-model="releaseDetails.partition" required>
+							<c:forEach items="${paritionList}" var="partition" varStatus="myIndex">
+										<option value="${partition.id}" selected>${partition.description}</option>
+									</c:forEach>
+							</select>
+						</td>
+						<td><input type="submit" value="Add New" class="smallButton"ng-click="addNew(releaseDetails)"></td>
 					</tr>
 				</table>
 				<div ng-hide="!deploymentDetails.length" class="scrolldiv">
@@ -95,18 +101,18 @@
 				<table>
 					<tr>
 						<td>Queue</td>
-						<td><input type="radio" ng-model="releaseDetails.JMSType"
-							ng-value='"Queue"' ng-checked="true"
+						<td><input type="radio" ng-model="releaseDetails.jmsType"
+							ng-value='"Q"' ng-checked="true"
 							data-ng-click="queueChecked()" /></td>
 						<td>Topic</td>
-						<td><input type="radio" ng-model="releaseDetails.JMSType"
-							ng-value='"Topic"' ng-click="topicChecked()" /></td>
+						<td><input type="radio" ng-model="releaseDetails.jmsType"
+							ng-value='"T"' ng-click="topicChecked()" /></td>
 
 						<td><input class="form-control" type="text"
-							placeholder="JNDI Name" ng-model="releaseDetails.JNDIName"
+							placeholder="JNDI Name" ng-model="releaseDetails.jndiName"
 							required></td>
 						<td><input class="form-control" type="text"
-							placeholder="{{jmsName}}" ng-model="releaseDetails.JMSName"
+							placeholder="{{jmsPlaceHolderNameName}}" ng-model="releaseDetails.jmsName"
 							required></td>
 						<td><input class="form-control" type="text"
 							placeholder="{{connectionFactory}}"
@@ -133,9 +139,9 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="(jmsObjectIndex, jmsObject) in jmsDetails">
-								<td>{{jmsObject.JMSType}}</td>
-								<td>{{jmsObject.JNDIName}}</td>
-								<td>{{jmsObject.JMSName}}</td>
+								<td>{{jmsObject.jmsType}}</td>
+								<td>{{jmsObject.jndiName}}</td>
+								<td>{{jmsObject.jmsName}}</td>
 								<td>{{jmsObject.connectionFactory}}</td>
 								<td>{{jmsObject.subDeployment}}</td>
 								<td><input type="button" class="delete" value="X"
@@ -150,21 +156,21 @@
 					<tr>
 
 						<td><input class="form-control" type="text"
-							placeholder="Data Source Name" ng-model="releaseDetails.DSName"
+							placeholder="Data Source Name" ng-model="releaseDetails.dataSourceName"
 							required></td>
 						<td><input class="form-control" type="text"
-							placeholder="Data Source JNDI" ng-model="releaseDetails.DSJNDI"
+							placeholder="Data Source JNDI" ng-model="releaseDetails.dataSourceJNDI"
 							required></td>
 						<td><input class="form-control" type="text"
-							placeholder="Data Base Host" ng-model="releaseDetails.DBHost"
+							placeholder="Data Base Host" ng-model="releaseDetails.dataBaseHost"
 							required></td>
 						<td><input class="form-control" type="text"
-							placeholder="Data Base Port" ng-model="releaseDetails.DBPort"
+							placeholder="Data Base Port" ng-model="releaseDetails.dataBasePort"
 							required></td>
 					<tr></tr>
 					<td><input class="form-control" type="text"
 						placeholder="Data Base Server Name"
-						ng-model="releaseDetails.DBServerName" required></td>
+						ng-model="releaseDetails.dataBaseServerName" required></td>
 					<td><input class="form-control" type="text"
 						placeholder="User Name" ng-model="releaseDetails.userName"
 						required></td>
@@ -190,11 +196,11 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="(dsObjectIndex ,dsObject) in dataSourceDetails">
-								<td>{{dsObject.DSName}}</td>
-								<td>{{dsObject.DSJNDI}}</td>
-								<td>{{dsObject.DBHost}}</td>
-								<td>{{dsObject.DBPort}}</td>
-								<td>{{dsObject.DBServerName}}</td>
+								<td>{{dsObject.dataSourceName}}</td>
+								<td>{{dsObject.dataSourceJNDI}}</td>
+								<td>{{dsObject.dataBaseHost}}</td>
+								<td>{{dsObject.dataBasePort}}</td>
+								<td>{{dsObject.dataBaseServerName}}</td>
 								<td>{{dsObject.userName}}</td>
 								<td>{{dsObject.password}}</td>
 								<td><input type="button" class="delete" value="X"
@@ -212,13 +218,13 @@
 							type="radio" name="jmsT" />
 						</td>
 						<td><input class="form-control" type="text"
-							placeholder="JNDI" ng-model="releaseDetails.JNDI" required></td>
+							placeholder="JNDI" ng-model="releaseDetails.ftpJNDI" required></td>
 						<td><input class="form-control" type="text" placeholder="CFI"
-							ng-model="releaseDetails.CFI" required></td>
+							ng-model="releaseDetails.ftpCFI" required></td>
 						<td><input class="form-control" type="text" placeholder="CI"
-							ng-model="releaseDetails.CI" required></td>
+							ng-model="releaseDetails.ftpCI" required></td>
 						<td><input class="form-control" type="text" placeholder="CP"
-							ng-model="releaseDetails.CP" required></td>
+							ng-model="releaseDetails.ftpCP" required></td>
 						<td><input class="form-control" type="text"
 							placeholder="host" ng-model="releaseDetails.host" required></td>
 					</tr>
@@ -258,10 +264,10 @@
 						<tbody>
 							<tr
 								ng-repeat="(adapterObjectIndex,adapterObject) in adapterDetails">
-								<td>{{adapterObject.JNDI}}</td>
-								<td>{{adapterObject.CFI}}</td>
-								<td>{{adapterObject.CI}}</td>
-								<td>{{adapterObject.CP}}</td>
+								<td>{{adapterObject.ftpJNDI}}</td>
+								<td>{{adapterObject.ftpCFI}}</td>
+								<td>{{adapterObject.ftpCI}}</td>
+								<td>{{adapterObject.ftpCP}}</td>
 								<td>{{adapterObject.host}}</td>
 								<td>{{adapterObject.port}}</td>
 								<td>{{adapterObject.user}}</td>
@@ -280,7 +286,7 @@
 				<table>
 					<tr>
 						<td><input class="form-control" type="text"
-							placeholder="Server Location"
+							placeholder="Source"
 							ng-model="releaseDetails.serverLocation" required></td>
 						<td><input class="form-control" type="text"
 							placeholder="Target" ng-model="releaseDetails.target" required></td>
@@ -292,7 +298,7 @@
 					<table class="zui-table zui-table-rounded">
 						<thead>
 							<tr>
-								<th>Server Location</th>
+								<th>Source</th>
 								<th>Target</th>
 								<th>Delete</th>
 							</tr>
@@ -309,11 +315,37 @@
 				</div>
 
 			</div>
+			<div ng-show="type=='CronJob'">
+
+				<table>
+					<tr>
+						<td><textarea class="form-control"	placeholder="Cron Job"	ng-model="releaseDetails.cronJob" required rows="4" cols="50"></textarea></td>
+							<td><input type="submit" value="Add New" class="smallButton"
+							ng-click="addCronJob(releaseDetails)"></td>
+					</tr>
+				</table>
+				<div ng-hide="!cronJobDetails.length" class="scrolldiv">
+					<table class="zui-table zui-table-rounded">
+						<thead>
+							<tr>
+								<th>Cron Job</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="(cronObjectIndex, cronObject) in cronJobDetails">
+								<td>{{cronObject.cronJob}}</td>
+								<td><input type="button" class="delete" value="X"
+									data-ng-click="removeCronJob(cronObjectIndex)" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
 		</div>
 		<div class="bottomDiv">
-			<input type="submit" value="SUBMIT" class="smallButton"
-							ng-click="addMDS(releaseDetails)">
-			<input type="submit" value="Submit" class="submitBtn">
+			<input type="submit" value="Submit" class="submitBtn" ng-click="submitRD()">
 		</div>
 </form>		
 </body>

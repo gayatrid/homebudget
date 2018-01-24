@@ -1,0 +1,23 @@
+#upleft {
+	width: 800px;
+	height: 250px;
+	background: #9595ff;
+	float: left
+}
+
+#upright {
+	width: 950px;
+	height: 500px;
+	background: #9595ff;
+	float: left;
+}
+
+#below {
+	height: 800px;
+	width: 600px;
+	
+	float: right;
+	left: 850px;
+	position: absolute;
+	
+}

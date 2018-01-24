@@ -7,9 +7,10 @@
 
 <body bgcolor="#F4F7FC">
 	<div align="center">
-		<img src="<%=request.getContextPath() %>/resources/imges/release.svg"><br>
+	<br><br><br>
+<%-- 		<img src="<%=request.getContextPath() %>/resources/imges/release.svg"><br> --%>
 		<a href="./addRD" >Add Release Details</a>
-		 <a	href="./viewRD" >Search Release Details</a>
+		 <a	href="./viewReleaseDetails" >Search Release Details</a>
 	</div>
 </body>
 </html>

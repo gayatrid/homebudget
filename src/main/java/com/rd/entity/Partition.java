@@ -6,12 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /*create table partition(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
  * description VARCHAR (30),CONSTRAINT PART_ID PRIMARY KEY (id));
 */
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "partition")
 public class Partition {

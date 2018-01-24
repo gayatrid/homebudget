@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /*CREATE TABLE MDS (
 		MDS_ID INTEGER NOT NULL,
@@ -17,7 +16,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 		SERVERLOCATION VARCHAR(150),
 		TARGET VARCHAR(100)
 	);*/
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "MDS")
 public class MDSObject {

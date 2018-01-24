@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /*CREATE TABLE RELEASE_DETAILS (
 		RD_ID INTEGER NOT NULL,
@@ -24,7 +23,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 		RELEASE_DESC VARCHAR(50)
 	);
 */
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "RELEASE_DETAILS")
 public class ReleaseDetail {

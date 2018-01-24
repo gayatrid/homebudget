@@ -9,8 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-
 /*CREATE TABLE DATA_SOURCE (
 		DS_ID INTEGER NOT NULL,
 		RDF_ID INTEGER NOT NULL,
@@ -23,7 +21,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 		PASSWORD VARCHAR(50)
 	);
 */
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "DATA_SOURCE")
 public class DataSourceObject {

@@ -2,8 +2,6 @@ package com.rd.controller;
 
 import java.io.IOException;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,7 +62,6 @@ public class ReleaseDetailsController {
 		return "viewReleaseDetails";
 	}
 	
-	@Consumes(MediaType.APPLICATION_JSON)
 	@RequestMapping(value = "/saveReleaseData", method = RequestMethod.POST)
 	public @ResponseBody String saveReleaseData(@RequestBody ReleaseDetail releaseDetail) {
 		System.out.println("getTicketType---->Date " + releaseDetail.getTicketType());

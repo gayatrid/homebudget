@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /*CREATE TABLE CRONJOB (
 		CRONJOB_ID INTEGER NOT NULL,
@@ -17,7 +16,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 		DESCRIPTION VARCHAR(300)
 	);
 */
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "CRONJOB")
 public class CronJob {

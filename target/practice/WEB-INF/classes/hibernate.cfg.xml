@@ -7,5 +7,7 @@
     <session-factory>
         <mapping class="com.hiber.entity.EmployeeEntity" />
         <mapping class="com.hiber.entity.Spending" />
+         <mapping class="com.hiber.entity.Store" />
+         <mapping class="com.hiber.entity.CreditData" />
     </session-factory>
 </hibernate-configuration>
