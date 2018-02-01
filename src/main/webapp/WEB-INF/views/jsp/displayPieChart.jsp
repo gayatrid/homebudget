@@ -8,6 +8,7 @@
 	href="<%=request.getContextPath()%>/resources/core/css/table.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/core/css/layout.css">
+	<link rel="stylesheet"	href="<%=request.getContextPath()%>/resources/core/css/common.css">
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script
 	src="<%=request.getContextPath()%>/resources/core/js/googleGraph.js"></script>
@@ -36,14 +37,14 @@ function drawChart() {
 	// Create the data table.	
 	var data2 = google.visualization.arrayToDataTable([    	['Spending', 'Area(square km)'],
 	                                                  	<c:forEach items="${spendingInStores}" var="spending">
-	                          								[ '${spending.description}', ${spending.price} ],
+	                          								[ '${spending.store.storeName}', ${spending.price} ],
 	                          							</c:forEach>
 	                                                ]);
 	
 	
 	// Set chart options
 	var options = {
-		'title' : 'Proft and Loss',
+		'title' : 'Income And Expenses',
 		is3D : true,
 		pieSliceText: 'label',
 		tooltip :  {showColorCode: true},
@@ -71,20 +72,22 @@ function drawChart() {
 </script>
 </head>
 <body bgcolor="#F4F7FC">
-	<form:form method="post" action="addRecord" commandName="spendingForm"	enctype="multipart/form-data">
-	<table>
-				<tr><td colspan="6" align="center"><form:input path="month" type="month"/><input type="submit" value="Add" name="search" /></td></tr>
-				<tr></tr>
-				<tr>
-					<td><form:select path="storeId">
-							<form:options items="${stores}" itemValue="id"
-								itemLabel="storeName" />
-						</form:select></td>
-						</tr></table>
-		<div id="below">
-			<div id="chart_div"></div>
-			<div id="profit_loss"></div>
-		</div>
+	<form:form method="post" action="viewIncomeAndExpenses" commandName="spendingForm">
+		<table>
+			<tr>
+				<td colspan="6" align="center"><form:input path="month"
+						type="month" /><input type="submit" value="View "
+					name="view" /></td>
+			</tr>
+		</table>
+		
+
+		<c:if test="${!empty incomeAndExpenses}">
+				<div id="chart_div"></div>
+				<div id="profit_loss"></div>
+
+		</c:if>
+
 	</form:form>
 </body>
 </html>

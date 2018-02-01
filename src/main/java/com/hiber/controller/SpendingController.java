@@ -1,52 +1,27 @@
 package com.hiber.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
-import org.joda.time.LocalDateTime;
-import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hiber.entity.Spending;
-import com.hiber.entity.Store;
 import com.hiber.service.CreditDataService;
 import com.hiber.service.SpendingService;
 import com.hiber.service.StoreService;
 import com.hiber.service.UploadDataFromFileBL;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.parser.PdfTextExtractor;
-import com.rd.util.BudgetUtils;
 
 @Controller
 public class SpendingController {
@@ -76,7 +51,17 @@ public class SpendingController {
 		map.addAttribute("spendingForm", new SpendingForm());
 		return "uploadFile";
 	}
+	@RequestMapping(value = "/openGraphicsPage", method = RequestMethod.GET)
+	public String displayPieChart(SpendingForm spendingForm,ModelMap map) {
+		return "displayPieChart";
+	}
 	
+	@RequestMapping(value = "/viewIncomeAndExpenses", method = RequestMethod.POST)
+	public String viewIncomeAndExpenses(SpendingForm spendingForm,ModelMap map) {
+		map.addAttribute("incomeAndExpenses", spendingService.getIncomeAndexpenses(spendingForm.getMonth()));
+		map.addAttribute("spendingInStores",spendingService.spendingInStore(spendingForm.getMonth()));
+		return "displayPieChart";
+	}
 	
 
 	@RequestMapping(value = "/getStarted", method = RequestMethod.GET)

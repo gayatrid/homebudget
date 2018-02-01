@@ -6,8 +6,8 @@
 <head>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/core/css/table.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/core/css/layout.css">
+<link rel="stylesheet"	href="<%=request.getContextPath()%>/resources/core/css/layout.css">
+<link rel="stylesheet"	href="<%=request.getContextPath()%>/resources/core/css/common.css">
 
 </head>
 <body bgcolor="#F4F7FC">
@@ -15,7 +15,7 @@
 		enctype="multipart/form-data">
 		<div id="upright">
 			<table>
-				<tr><td colspan="6" align="center"><form:input path="month" type="month"/><input type="submit" value="Add" name="search" /></td></tr>
+				<tr><td colspan="6" align="center"><form:input path="month" type="month"/><input type="submit" value="View" name="search" /></td></tr>
 				<tr></tr>
 				<tr>
 					<td><form:select path="storeId">

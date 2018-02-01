@@ -4,8 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-<link rel="stylesheet"	href="<%=request.getContextPath()%>/resources/core/css/table.css">
-<link rel="stylesheet"	href="<%=request.getContextPath()%>/resources/core/css/layout.css">
+<link rel="stylesheet"	href="<%=request.getContextPath()%>/resources/core/css/common.css">
 <script type="text/javascript">
 	$(function() {
 		$('#idDateField').datepicker();

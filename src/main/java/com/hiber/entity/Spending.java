@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 
@@ -53,9 +54,22 @@ public class Spending {
 	@JoinColumn(name = "store")
 	private Store store;
 	
+	@Transient
+	private Double totalSaving;
 	
 	
 	
+	
+	
+	
+
+	public Double getTotalSaving() {
+		return totalSaving;
+	}
+
+	public void setTotalSaving(Double totalSaving) {
+		this.totalSaving = totalSaving;
+	}
 
 	public Store getStore() {
 		return store;

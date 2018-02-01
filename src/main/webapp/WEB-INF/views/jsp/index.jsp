@@ -43,9 +43,9 @@
                    <li>
                         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Graphic</a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="#">Page 1</a></li>
-                            <li><a href="#">Page 2</a></li>
-                            <li><a href="#">Page 3</a></li>
+                            <li><a href="./openGraphicsPage" target="contentopen">Income/Expenses</a></li>
+                            <!-- <li><a href="./openGraphicsPage" target="contentopen"></a></li>
+                            <li><a href="#">Page 3</a></li> -->
                         </ul>
                     </li>
                   
@@ -69,7 +69,8 @@
 
                     </div>
                 </nav> -->
- <div id="contentopen" ><iframe name="contentopen" src="start.jsp"  style="width: 1000px;	height: 550px;"></iframe></div>
+                
+ <div id="contentopen" ><iframe name="contentopen" src="./getStarted"  style="width: 1000px;	height: 550px;"></iframe></div>
 
              
                 

@@ -1,6 +1,5 @@
 package com.hiber.service;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -56,5 +55,17 @@ public class SpendingServiceImpl implements SpendingService {
 	@Transactional
 	public Spending getSpending(Integer spendingId) {
 		return spendingDAO.getSpending(spendingId);
+	}
+
+	@Override
+	@Transactional
+	public List<Spending> getIncomeAndexpenses(String monthlyRecord) {
+		return spendingDAO.getIncomeAndexpenses(monthlyRecord);
+	}
+
+	@Override
+	@Transactional
+	public List<Spending> spendingInStore(String monthlyRecord) {
+		return spendingDAO.spendingInStore(monthlyRecord);
 	}
 }

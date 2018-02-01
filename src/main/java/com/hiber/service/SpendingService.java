@@ -15,4 +15,8 @@ public interface SpendingService {
 	public Spending getSpending(Integer spendingId);
 
 	public void addSpendingFromFile(Spending spending);
+	
+public List<Spending> getIncomeAndexpenses(String monthlyRecord);
+	
+	public List<Spending> spendingInStore(String monthlyRecord);
 }
